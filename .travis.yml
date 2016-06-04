@@ -1,0 +1,18 @@
+language: ruby
+script:
+  - bundle exec rake test
+services:
+  - postgresql
+rvm:
+  - 2.3.0
+  - 2.2.5
+  - 2.1.9
+env:
+  matrix:
+    - RAILS_VERSION="~> 4.2.0"
+    - RAILS_VERSION="~> 5.0rc1"
+matrix:
+  fast_finish: true
+  allow_failures:
+    - env: DB=postgres RAILS_VERSION="~> 5.0rc1"
+    - env: DB=mysql RAILS_VERSION="~> 5.0rc1"
